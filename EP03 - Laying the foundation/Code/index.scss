@@ -1,0 +1,32 @@
+* {
+	box-sizing: border-box;
+}
+.search-bar-container {
+  display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 53px;
+	width: auto;
+	background-color: black;
+}
+.search-bar {
+	display: flex;
+}
+.search-button {
+	display: flex;
+}
+.left {
+	display: flex;
+	img {
+		height: 64px;
+	}
+}
+.center {
+	display: flex;
+}
+.right {
+	display: flex;
+	img {
+		height: 52px;
+	}
+}
