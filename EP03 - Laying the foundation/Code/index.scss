@@ -9,10 +9,9 @@
 	width: auto;
 	background-color: black;
 }
-.search-bar {
-	display: flex;
-}
-.search-button {
+.search-bar,
+.search-button,
+.center {
 	display: flex;
 }
 .left {
@@ -20,9 +19,6 @@
 	img {
 		height: 64px;
 	}
-}
-.center {
-	display: flex;
 }
 .right {
 	display: flex;

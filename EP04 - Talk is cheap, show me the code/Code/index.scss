@@ -1,0 +1,96 @@
+// .font-outfit {
+// 	text-transform: uppercase;
+// 	font-size: larger;
+// 	font-family: 'Outfit', sans-serif;
+// }
+.header {
+  background: rgb(238, 210, 193);
+  background: linear-gradient(
+    90deg,
+    rgba(238, 210, 193, 1) 0%,
+    rgba(245, 113, 38, 1) 100%
+  );
+}
+.header,
+.nav-items-container > ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  height: 90px;
+  li {
+    padding: 10px;
+    margin: 10px;
+    font-size: larger;
+    cursor: pointer;
+    font-family: "Outfit", sans-serif;
+  }
+}
+.restaurant-logo {
+  width: 100px;
+  height: 84px;
+}
+.cart-logo {
+  width: 30px;
+  height: 53px;
+}
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-top: 5px;
+  background: rgb(238, 210, 193);
+  background: linear-gradient(
+    90deg,
+    rgba(238, 210, 193, 1) 0%,
+    rgba(245, 113, 38, 1) 100%
+  );
+  .search-input {
+    margin: 10px;
+    width: 425px;
+    height: 40px;
+    border: none;
+  }
+  .search-btn {
+    margin: 10px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    text-transform: uppercase;
+    font-family: "Outfit", sans-serif;
+  }
+}
+.restaurant-card-container {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  background: rgb(238, 210, 193);
+  background: linear-gradient(
+    90deg,
+    rgba(238, 210, 193, 1) 0%,
+    rgba(245, 113, 38, 1) 100%
+  );
+  .restaurant-card {
+    margin: 5px;
+    width: 160px;
+    height: 175px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    flex-wrap: wrap;
+    img {
+      width: 150px;
+      height: 100px;
+    }
+    h3, span {
+      text-transform: uppercase;
+      font-family: "Outfit", sans-serif;
+			margin: 0;
+			font-size: smaller;
+    }
+  }
+}
