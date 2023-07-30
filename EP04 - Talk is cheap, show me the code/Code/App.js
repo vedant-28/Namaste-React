@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import restaurantLogo from "./assets/chef-restaurant-logo.svg";
 import shoppingCart from "./assets/shopping-cart.svg";
 import "./index.scss";
+import { restaurantList } from "./restaurantData.js";
 /*
 FoodFire app:
 1) Header
@@ -22,10 +23,14 @@ FoodFire app:
 
 // Header component:
 const Header = () => {
-  return(
+  return (
     <div className="header">
       <div className="restaurant-logo-container">
-        <img className="restaurant-logo" src={restaurantLogo} alt="restaurant-logo" />
+        <img
+          className="restaurant-logo"
+          src={restaurantLogo}
+          alt="restaurant-logo"
+        />
       </div>
       <div className="nav-items-container">
         <ul>
@@ -41,14 +46,18 @@ const Header = () => {
   );
 };
 
-const RestaurantCard = () => {
+const RestaurantCard = ({cloudinaryImageId, name, cuisines, avgRating}) => {
   return (
     <div className="restaurant-card">
-      <img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/b7r9runu5yjkfsl20tri" alt="restaurant-food-image" />
-      <h3>Meghna foods</h3>
-      <span>Punjabi, North Indian</span>
-      <span>⭐ 4.4</span>
-      <span>ETA: 30 min</span>
+      <img
+        src={
+          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
+          cloudinaryImageId
+        }
+      />
+      <h3>{name}</h3>
+      <span>{cuisines.slice(0, 2).join(", ")}</span>
+      <span>⭐ {avgRating}</span>
     </div>
   );
 };
@@ -57,11 +66,17 @@ const Body = () => {
   return (
     <div className="body">
       <div className="search-bar">
-        <input className="search-input" type="search" placeholder="FIND YOUR FAVOURITE RESTAURANT HERE..."/>
+        <input
+          className="search-input"
+          type="search"
+          placeholder="FIND YOUR FAVOURITE RESTAURANT HERE..."
+        />
         <button className="search-btn">search</button>
       </div>
       <div className="restaurant-card-container">
-        <RestaurantCard />
+        {restaurantList.map(restaurant => (
+            <RestaurantCard key={restaurant.data.id} {...restaurant.data} />
+        ))}
       </div>
     </div>
   );

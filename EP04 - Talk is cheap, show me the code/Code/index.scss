@@ -1,8 +1,3 @@
-// .font-outfit {
-// 	text-transform: uppercase;
-// 	font-size: larger;
-// 	font-family: 'Outfit', sans-serif;
-// }
 .header {
   background: rgb(238, 210, 193);
   background: linear-gradient(
@@ -53,6 +48,10 @@
     height: 40px;
     border: none;
   }
+  .search-btn:hover,
+  .search-input:hover {
+    border: 1px solid black;
+  }
   .search-btn {
     margin: 10px;
     width: 100px;
@@ -65,32 +64,37 @@
 .restaurant-card-container {
   margin-top: 5px;
   display: flex;
-  flex-direction: row;
+  flex-flow: wrap;
   background: rgb(238, 210, 193);
   background: linear-gradient(
     90deg,
     rgba(238, 210, 193, 1) 0%,
     rgba(245, 113, 38, 1) 100%
   );
+  .restaurant-card:hover {
+    box-shadow: 0 0  0 1px black;
+  }
   .restaurant-card {
     margin: 5px;
-    width: 160px;
-    height: 175px;
+    width: 168px;
+    height: 219px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
     background-color: white;
     flex-wrap: wrap;
+    cursor: pointer;
     img {
-      width: 150px;
+      width: 156px;
       height: 100px;
+      margin: 5px;
     }
-    h3, span {
+    h3,
+    span {
       text-transform: uppercase;
       font-family: "Outfit", sans-serif;
-			margin: 0;
-			font-size: smaller;
+      margin: 2px;
+      font-size: smaller;
     }
   }
 }
