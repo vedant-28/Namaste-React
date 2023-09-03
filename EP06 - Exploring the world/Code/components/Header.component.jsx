@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import restaurantLogo from "../assets/chef-restaurant-logo.svg";
 import shoppingCartIcon from "../assets/shopping-cart.svg";
 
 const Header = () => {
+  const [buttonName, setButtonName] = useState("LOGIN");
+
   return (
     <div className="header">
       <div className="restaurant-logo-container">
@@ -17,8 +19,21 @@ const Header = () => {
           <li>HOME</li>
           <li>ABOUT US</li>
           <li>CONTACT US</li>
+          <button 
+            onClick={() => {
+              buttonName === "LOGIN" ? setButtonName("LOGOUT") : setButtonName("LOGIN");
+                console.log(buttonName);
+            }}
+            className="login-button"
+          >
+            {buttonName}
+          </button>
           <li>
-            <img className="cart-logo" src={shoppingCartIcon} alt="shopping-cart" />
+            <img
+              className="cart-logo"
+              src={shoppingCartIcon}
+              alt="shopping-cart"
+            />
           </li>
         </ul>
       </div>
