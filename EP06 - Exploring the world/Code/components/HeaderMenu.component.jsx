@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import restaurantLogo from "../assets/chef-restaurant-logo.svg";
 import shoppingCartIcon from "../assets/shopping-cart.svg";
 
-const Header = () => {
+const HeaderMenu = () => {
   const [buttonName, setButtonName] = useState("LOGIN");
 
   return (
@@ -41,4 +41,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderMenu;
