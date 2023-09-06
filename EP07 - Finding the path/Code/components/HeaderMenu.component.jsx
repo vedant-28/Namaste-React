@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import restaurantLogo from "../assets/chef-restaurant-logo.svg";
 import shoppingCartIcon from "../assets/shopping-cart.svg";
 
@@ -16,9 +17,15 @@ const HeaderMenu = () => {
       </div>
       <div className="nav-items-container">
         <ul>
-          <li>HOME</li>
-          <li>ABOUT US</li>
-          <li>CONTACT US</li>
+          <li>
+            <Link to={"/"}>HOME</Link>
+          </li>
+          <li>
+            <Link to={"/about"}>ABOUT US</Link>
+          </li>
+          <li>
+            <Link to={"/contact"}>CONTACT US</Link>
+          </li>
           <button 
             onClick={() => {
               buttonName === "LOGIN" ? setButtonName("LOGOUT") : setButtonName("LOGIN");
