@@ -18,20 +18,20 @@ const HeaderMenu = () => {
       <div className="nav-items-container">
         <ul>
           <li>
-            <Link to={"/"}>HOME</Link>
+            <Link className="nav-link" to={"/"}>HOME</Link>
           </li>
           <li>
-            <Link to={"/about"}>ABOUT US</Link>
+            <Link className="nav-link" to={"/about"}>ABOUT US</Link>
           </li>
           <li>
-            <Link to={"/contact"}>CONTACT US</Link>
+            <Link className="nav-link" to={"/contact"}>CONTACT US</Link>
           </li>
           <button 
             onClick={() => {
               buttonName === "LOGIN" ? setButtonName("LOGOUT") : setButtonName("LOGIN");
                 console.log(buttonName);
             }}
-            className="login-button"
+            className="login-button nav-link"
           >
             {buttonName}
           </button>
