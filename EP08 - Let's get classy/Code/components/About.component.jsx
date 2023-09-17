@@ -3,46 +3,51 @@ import React from "react";
 class About extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    // state with initial default values
     this.state = {
-      count: 0,
+      userInfo: {
+        name: "",
+        location: "",
+        avatar_url: "",
+        email: "",
+      },
     };
-  }
+  };
 
-  componentDidMount() {
+  async componentDidMount() {
     // used for API calls prominently.
     console.log("Comonent did mount");
-  }
-
-  onClickHandler() {
+    const data = await fetch("https://api.github.com/users/vedant-28");
+    const jsonUserData = await data.json();
+    console.log(jsonUserData);
     this.setState({
-      count: this.state.count + 1,
+      userInfo: jsonUserData,
     });
   };
 
+  componentDidUpdate() {
+    console.log("Component did update");
+  };
+
+  componentWillUnmount() {
+    console.log("Component unmounted");
+  };
+
   render() {
-    const { name, location } = this.props;
-    const { count } = this.state;
+    const { name, location, avatar_url, email } = this.state.userInfo;
     return (
-      <div>
-        <h2>Name: {name}</h2>
-        <h3>City: {location}</h3>
-        <h4>Count: {count}</h4>
-        <button className="count-btn" onClick={this.onClickHandler}>
-          +
-        </button>
-        <button
-          className="reset-count-btn"
-          onClick={() => {
-            this.setState({ count: 0 });
-          }}
-        >
-          Reset count
-        </button>
-        <h3>Contact: vedant10vaidya@gmail.com</h3>
+      <div className="about-div">
+        <div className="about-img-div">
+          <img src={avatar_url} className="avatar-img" />
+        </div>
+        <div className="about-details-div">
+          <h2>Name: {name}</h2>
+          <h3>Location: {location ? location : "Pune"}</h3>
+          <h3>Contact: {email ? email :"vedant10vaidya@gmail.com"}</h3>
+        </div>
       </div>
     );
-  }
-}
+  };
+};
 
 export default About;
