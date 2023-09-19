@@ -176,7 +176,15 @@
       width: 100px;
       height: 100px;
       border: 1px solid black;
-      border-radius: 50%;
     }
   }
+}
+.status-offline-message {
+  background: linear-gradient(
+    90deg,
+    rgba(238, 210, 193, 1) 0%,
+    rgba(245, 113, 38, 1) 100%
+  );
+  padding: 10px 255px;
+  margin: 5px;
 }

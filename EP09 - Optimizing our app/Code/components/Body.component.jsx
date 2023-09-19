@@ -3,6 +3,7 @@ import RestaurantCard from "./ResCard.component";
 import ShimmerCard from "./ShimmerCard.component";
 import { SWIGGY_API_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useInternetStatus from "../utils/useInternetStatus";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
@@ -22,6 +23,13 @@ const Body = () => {
     setFilterdRestList(jsonRestaurantData?.data?.cards[2]?.card?.card?.gridElements
       ?.infoWithStyle?.restaurants);
   };
+
+  const internetStatus = useInternetStatus();
+  if (internetStatus === false) {
+    return(
+      <h1 className="status-offline-message">You are offline! Please check internet connection...</h1>
+    );
+  }
 
   // Conditional rendering
   return resList.length === 0 ? (

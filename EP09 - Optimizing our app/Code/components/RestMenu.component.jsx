@@ -1,26 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { RESTAURANT_MENU, RESTAURANT_IMG_URL } from "../utils/constants";
+import { RESTAURANT_IMG_URL } from "../utils/constants";
 import ShimmerCard from "./ShimmerCard.component";
 import { useParams } from "react-router-dom";
+import useRestMenu from "../utils/useRestMenu";
 
 const RestMenu = () => {
-  const [restaurantInfo, setRestaurantInfo] = useState(null);
 	const { resId } = useParams();
-
-  const fetchRestaurantMenu = async () => {
-    const menuData = await fetch(RESTAURANT_MENU + resId);
-    const jsonMenuData = await menuData.json();
-    console.log(jsonMenuData);
-		setRestaurantInfo(jsonMenuData);
-  };
-
-  useEffect(() => {
-    fetchRestaurantMenu();
-  }, []);
+	const restaurantInfo = useRestMenu(resId);
 
 	if (restaurantInfo === null) return <ShimmerCard />;
-	const { name, cloudinaryImageId, locality, cuisines, costForTwoMessage } = restaurantInfo.data?.cards[0]?.card?.card?.info;
-	const { itemCards } = restaurantInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card.card;
+	const { name, cloudinaryImageId, locality, cuisines, costForTwoMessage } = restaurantInfo?.cards[0]?.card?.card?.info;
+	const { itemCards } = restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card.card;
 
   return (
     <div className="restautant-menu">
