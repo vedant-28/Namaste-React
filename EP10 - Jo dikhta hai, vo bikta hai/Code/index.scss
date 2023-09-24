@@ -1,0 +1,190 @@
+* {
+  font-family: "Outfit", sans-serif; 
+}
+.header {
+  background: rgb(238, 210, 193);
+  background: linear-gradient(
+    90deg,
+    rgba(238, 210, 193, 1) 0%,
+    rgba(245, 113, 38, 1) 100%
+  );
+}
+.header,
+.nav-items-container > ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  height: 90px;
+  li {
+    padding: 10px;
+    margin: 10px;
+    font-size: larger;
+    cursor: pointer;
+    font-family: "Outfit", sans-serif;
+  }
+}
+.nav-link,
+.card-nav-link {
+  color: #000;
+  text-decoration: none;
+}
+.nav-link:hover {
+  color: #fff;
+}
+.login-button {
+  background: none;
+  border: none;
+  padding: 10px;
+  margin: 10px;
+  font-size: larger;
+  cursor: pointer;
+  font-family: "Outfit", sans-serif;
+}
+.restaurant-logo {
+  width: 100px;
+  height: 84px;
+}
+.cart-logo {
+  width: 30px;
+  height: 53px;
+}
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-top: 5px;
+  background: rgb(238, 210, 193);
+  background: linear-gradient(
+    90deg,
+    rgba(238, 210, 193, 1) 0%,
+    rgba(245, 113, 38, 1) 100%
+  );
+  .search-input {
+    margin: 10px;
+    width: 425px;
+    height: 40px;
+    border: none;
+  }
+  .search-btn:hover,
+  .search-input:hover,
+  .filter-btn:hover {
+    border: 1px solid black;
+  }
+  .search-btn,
+  .filter-btn {
+    margin: 10px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: "Outfit", sans-serif;
+  }
+}
+.restaurant-card-container {
+  margin-top: 5px;
+  display: flex;
+  flex-flow: wrap;
+  background: rgb(238, 210, 193);
+  background: linear-gradient(
+    90deg,
+    rgba(238, 210, 193, 1) 0%,
+    rgba(245, 113, 38, 1) 100%
+  );
+  .restaurant-card:hover {
+    box-shadow: 0 0  0 1px black;
+  }
+  .restaurant-card {
+    margin: 5px;
+    width: 168px;
+    height: 219px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    flex-wrap: wrap;
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+    img {
+      width: 156px;
+      height: 100px;
+      margin: 5px;
+    }
+    h3,
+    span {
+      text-transform: uppercase;
+      font-family: "Outfit", sans-serif;
+      margin: 2px;
+      font-size: smaller;
+    }
+  }
+}
+.shimmer-card-container {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-flow: wrap;
+  background: #fff;
+  .shimmer-card {
+    margin: 5px;
+    width: 168px;
+    height: 219px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0  0 0.5px gray;
+    background: #f0f0f0;
+  }
+}
+.restautant-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Outfit", sans-serif;
+  margin: 25px auto 0;
+  margin-top: 5px;
+  width: 800px;
+  background: linear-gradient(
+    90deg,
+    rgba(238, 210, 193, 1) 0%,
+    rgba(245, 113, 38, 1) 100%
+  );
+  img {
+    width: 250px;
+  }
+}
+.about-div {
+  margin-top: 5px;
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+  align-items: center;
+  background: linear-gradient(
+    90deg,
+    rgba(238, 210, 193, 1) 0%,
+    rgba(245, 113, 38, 1) 100%
+  );
+  .about-img-div {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    .avatar-img {
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+    }
+  }
+}
+.status-offline-message {
+  background: linear-gradient(
+    90deg,
+    rgba(238, 210, 193, 1) 0%,
+    rgba(245, 113, 38, 1) 100%
+  );
+  padding: 10px 255px;
+  margin: 5px;
+}
