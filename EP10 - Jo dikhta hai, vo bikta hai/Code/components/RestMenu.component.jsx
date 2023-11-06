@@ -4,28 +4,38 @@ import { useParams } from "react-router-dom";
 import useRestMenu from "../utils/useRestMenu";
 
 const RestMenu = () => {
-	const { resId } = useParams();
-	const restaurantInfo = useRestMenu(resId);
+  const { resId } = useParams();
+  const restaurantInfo = useRestMenu(resId);
 
-	if (restaurantInfo === null) return <ShimmerCard />;
-	const { name, cloudinaryImageId, locality, cuisines, costForTwoMessage } = restaurantInfo?.cards[0]?.card?.card?.info;
-	const { itemCards } = restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card.card;
+  if (restaurantInfo === null) {
+	return(
+		<div className="flex flex-row">
+			<ShimmerCard />
+		</div>
+	);
+  };
+  const { name, cloudinaryImageId, locality, cuisines, costForTwoMessage } =
+    restaurantInfo?.cards[0]?.card?.card?.info;
+  const { itemCards } =
+    restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+      .card;
 
   return (
-    <div className="restautant-menu">
-      <h2>{name}</h2>
-			<img src={RESTAURANT_IMG_URL + cloudinaryImageId} />
-			<h3>{locality}</h3>
-      <h3>{cuisines.slice(0,5).join(", ")} - {costForTwoMessage}</h3>
-			<ul className="menu-items">
-				{
-					itemCards?.map((item) => (
-						<li key={item?.card.info.id}>
-							{item?.card.info.name} -------- ₹{item?.card.info.price/100 || item?.card.info.defaultPrice/100}
-						</li>
-					))
-				}
-			</ul>
+    <div className="flex flex-col items-center w-[800px] mt-[25px] mb-0 mx-auto bg-gradient-to-r from-tangerine-faint to-tangerine-deep">
+      <h2 className="text-2xl m-[10px]">{name}</h2>
+      <img src={RESTAURANT_IMG_URL + cloudinaryImageId} className="w-[250px]" />
+      <h3 className="m-[10px]">{locality}</h3>
+      <h3 className="m-[10px]">
+        {cuisines.slice(0, 5).join(", ")} - {costForTwoMessage}
+      </h3>
+      <ul className="menu-items">
+        {itemCards?.map((item) => (
+          <li key={item?.card.info.id}>
+            {item?.card.info.name} -------- ₹
+            {item?.card.info.price / 100 || item?.card.info.defaultPrice / 100}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

@@ -7,37 +7,37 @@ const HeaderMenu = () => {
   const [buttonName, setButtonName] = useState("LOGIN");
 
   return (
-    <div className="header">
+    <div className="flex justify-between items-center list-none h-90  bg-gradient-to-r from-tangerine-faint to-tangerine-deep">
       <div className="restaurant-logo-container">
         <img
-          className="restaurant-logo"
+          className="w-[100px] h-[84px] p-1"
           src={restaurantLogo}
           alt="restaurant-logo"
         />
       </div>
-      <div className="nav-items-container">
-        <ul>
-          <li>
-            <Link className="nav-link" to={"/"}>HOME</Link>
+      <div className="flex justify-between items-center list-none h-90">
+        <ul className="flex justify-between items-center list-none h-90">
+          <li className="p-2.5 m-2.5 text-lg cursor-pointer">
+            <Link className="hover:text-white" to={"/"}>HOME</Link>
           </li>
-          <li>
-            <Link className="nav-link" to={"/about"}>ABOUT US</Link>
+          <li className="p-2.5 m-2.5 text-lg cursor-pointer">
+            <Link className="hover:text-white" to={"/about"}>ABOUT US</Link>
           </li>
-          <li>
-            <Link className="nav-link" to={"/contact"}>CONTACT US</Link>
+          <li className="p-2.5 m-2.5 text-lg cursor-pointer">
+            <Link className="hover:text-white" to={"/contact"}>CONTACT US</Link>
           </li>
-          <button 
+          <button
             onClick={() => {
               buttonName === "LOGIN" ? setButtonName("LOGOUT") : setButtonName("LOGIN");
                 console.log(buttonName);
             }}
-            className="login-button nav-link"
+            className="text-black hover:text-white no-underline bg-none border-none p-[10px] m-[10px] text-lg cursor-pointer"
           >
             {buttonName}
           </button>
-          <li>
+          <li className="p-2.5 m-2.5 text-lg cursor-pointer">
             <img
-              className="cart-logo"
+              className="w-8 h-8"
               src={shoppingCartIcon}
               alt="shopping-cart"
             />

@@ -36,9 +36,9 @@ class About extends React.Component {
   render() {
     const { name, location, avatar_url, email } = this.state.userInfo;
     return (
-      <div className="about-div">
-        <div className="about-img-div">
-          <img src={avatar_url} className="avatar-img" />
+      <div className="grid grid-cols-[0.2fr_1fr] items-center mt-[5px] bg-gradient-to-r from-tangerine-faint to-tangerine-deep">
+        <div className="p-[15px]">
+          <img src={avatar_url} className="border" />
         </div>
         <div className="about-details-div">
           <h2>Name: {name}</h2>
