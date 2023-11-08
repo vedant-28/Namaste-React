@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import RestaurantCard from "./ResCard.component";
+import RestaurantCard, { withLessSLA } from "./ResCard.component";
 import ShimmerCard from "./ShimmerCard.component";
 import { SWIGGY_API_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
@@ -10,6 +10,9 @@ const Body = () => {
   const [filteredRestList, setFilterdRestList] = useState([]);
   const [filterBtnName, setFilterBtnName] = useState("TOP RATED");
   const [searchText, setSearchText] = useState("");
+
+  console.log("resList===>", resList);
+  const RestaurantWithLessSLA = withLessSLA(RestaurantCard);
 
   useEffect(() => {
     fetchRestaurantData();
@@ -91,7 +94,11 @@ const Body = () => {
             key={restaurant?.info?.id}
             to={"/restaurants/" + restaurant?.info?.id}
           >
-            <RestaurantCard resData={restaurant?.info} />
+            {restaurant?.info?.sla?.deliveryTime < 30 ? (
+              <RestaurantWithLessSLA resData={restaurant?.info} />
+            ) : (
+              <RestaurantCard resData={restaurant?.info} />
+            )}
           </Link>
         ))}
       </div>
