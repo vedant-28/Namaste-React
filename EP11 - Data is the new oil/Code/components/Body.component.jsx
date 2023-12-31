@@ -21,13 +21,12 @@ const Body = () => {
   const fetchRestaurantData = async () => {
     const restaurantData = await fetch(SWIGGY_API_URL);
     const jsonRestaurantData = await restaurantData.json();
+    console.log('data===>', jsonRestaurantData);
     setResList(
-      jsonRestaurantData?.data?.cards[2]?.card?.card?.gridElements
-        ?.infoWithStyle?.restaurants
+      jsonRestaurantData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilterdRestList(
-      jsonRestaurantData?.data?.cards[2]?.card?.card?.gridElements
-        ?.infoWithStyle?.restaurants
+      jsonRestaurantData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -41,7 +40,7 @@ const Body = () => {
   }
 
   // Conditional rendering
-  return resList.length === 0 ? (
+  return resList?.length === 0 ? (
     <div className="flex flex-row items-center flex-wrap bg-white">
       <ShimmerCard />
     </div>
