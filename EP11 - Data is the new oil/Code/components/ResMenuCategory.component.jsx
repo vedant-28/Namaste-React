@@ -6,7 +6,6 @@ const ResMenuCategory = ({ data, showItems, index, showIndex, setShowIndex }) =>
   // const [showItems, setShowItems] = useState(); // ToBe used in case on controlled comps; i.e. State will be local for each children comp.
 
   const clickHandler = () => {
-    console.log("clicked===>", showItems);
     // setShowItems(!showItems); // ToBe used in case on controlled comps; i.e. State will be local for each children comp.
     showIndex ? setShowIndex(null) : setShowIndex(index);
   };

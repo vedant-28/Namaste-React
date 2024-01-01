@@ -1,0 +1,85 @@
+* Higher order comps:
+- Function which accepts a component as an argument and/ or return a component from it.
+- Higher order comp accepts another existing component & enhances/ tweaks it.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+* Property accessors:
+- Two ways to access properties:
+ 1) dot (.) notation => object.propertyName = value;
+ 2) bracket ([" "]) notation => object["@property"] = "value"; => used for property names which are considered as invalid in terms of syntax by JS
+more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+- Imp part of React app is to manage it's data.
+- UI is very static, as it does not have it's own logic. 
+Data is different part of an app as it has it's own layer.
+- All react apps have two layers at very high level. 
+ 1) UI layer & 2) Data layer.
+ - UI layer is powered by data layer; and has JSX (styling & display part) at it's core.
+ - Data layer consists of states, props, local variables etc; means whatever data we give to an app.
+- Managing data effectively in a React app is important for good performance for a app.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+* Lifting state up:
+ - to know other components that specific component's state is chnaged, we have to lift up the state of that specific component when changed.
+ - Parent component should control the state of children comps instead of each child controlling their own state.
+ - State value is updated from parent comp instead of each comp having it's own.
+ Hence now children comps will become controlled comp hence it's receiving state value from parent.
+ - When comp has it's own state, it;s called as uncontrolled comp.
+ -------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+* Prop drilling:
+ - react has unidirectional data flow, top to bottom; i.e Parent to Child.
+ - If there are multiple levels of nested comps in an app, then for sending data from root comp to leaf comp, we have to send it as a prop to each nested children until we receive it in desired leaf comp.
+ - To solve the problem of prop drilling, Context API is used.
+ + Creating context:
+	- createContext() is used from react library. We need to provide piece of information to it to hold.
+	It's like a central/ global object. It is used as initial value of context. (For login/ logout user context; loggedInUser is default value to show onLoad of app.)
+	- In functionall comps, we have useContext hook to access context created. 
+	[e.g. const contextData = useContext(contextName);]
+	- But in class based comps, accessing method of context is bit different.
+	We need to access it as: <contextName.Consumer>...</contextName.Consumer>.
+	- "Consumer" is provided by React when context is created; so we can access it using two ways, viz. using Hook (useContext) Or by Consumer (contextName.Consumer)
+	- When using Consumer, we need to have JSX i.e. a callback  which gets access to the data provided by context (contextData) as:
+	<contextName.Consumer>
+		{({ data }) => <h1>{data}</h1>}
+	</contextName.Consumer>
+	- <contextName.Provider value={{ someValue }}>...</contextName.Provider> is used to wrap root level "app" component which is intern used to provide a value of an updated context to "app" after some operation done. i.e. Provider is used to override the default value of context. So whatever component we wrap in Provider, used updated value instead of default value.
+	[e.g. Updating uname after performing an auth to login. (see code)]
+	- Context is a global space which can be provided to whole app or a portion of an app.
+	Provider can be used anywhere to override the default value provided by context.
+	- Also, Provider can be nested to override default value for any specific component as:
+	<UserContext.Provider value={{loggedInUser: userName1}}>
+      <div className="app">
+		<UserContext.Provider value={{loggedInUser: userName2}}>
+         <Header />
+		</UserContext.Provider>
+        <Outlet />
+      </div>
+    </UserContext.Provider>
+	Hence, uname value is overridden only for Header comp to display different uname value for that specific comp.
+	- It depends on where you're "providing" your new value. If not provided, default value from context is taken by the comps.
+	+ Updating context value based on user input for all app:
+		- We can provide set function from useState() in Provider's value, so as to be able to modify that value based on the input from user as:
+		<UserContext.Provider value={{loggedInUser: userName, setUserName}}>
+			<div className="app">
+				<Header />
+				<Outlet />
+			</div>
+		</UserContext.Provider>
+	
+		We'll have access of this "set" function everywhere now, we can destructure it in the required comp to use as:
+		const { loggedInUser, setUserName } = useContext(userContext);
+	
+		To update it based on user's input, we can use it as:
+		<div>
+			<label>Username: </label>
+				<input
+				value={loggedInUser} // default value
+				onChange={(event) => setUserName(event.target.value)} // to change based on user input
+				/>
+		</div>
+		[context is bound to state]
+		- This change will take place in all places where we have "Provided" context; even though updating logic is not available there as we're "consuming" that "Provided" context wherever we need to update. It's because whole app is utilizing same context & based on user input it's updating (taking user input value instead of defalu or dummy auth value we provide).
+		- i.e. Context ia a global sapce that we are modifying which is accessible in whole app as per our "Provision".
+--------------------------------------------------------------------------------------------------------------------------------------------------------------

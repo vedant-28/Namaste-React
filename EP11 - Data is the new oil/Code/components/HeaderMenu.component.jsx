@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import restaurantLogo from "../assets/chef-restaurant-logo.svg";
 import shoppingCartIcon from "../assets/shopping-cart.svg";
+import UserContext from "../Contexts/userContext";
 
 const HeaderMenu = () => {
   const [buttonName, setButtonName] = useState("LOGIN");
+  const { loggedInUser } = useContext(UserContext);
 
   return (
     <div className="flex justify-between items-center list-none h-90  bg-gradient-to-r from-tangerine-faint to-tangerine-deep">
@@ -28,7 +30,7 @@ const HeaderMenu = () => {
           </li>
           <button
             onClick={() => {
-              buttonName === "LOGIN" ? setButtonName("LOGOUT") : setButtonName("LOGIN");
+              buttonName === "LOGIN" ? setButtonName(loggedInUser) : setButtonName("LOGIN");
                 console.log(buttonName);
             }}
             className="text-black hover:text-white no-underline bg-none border-none p-[10px] m-[10px] text-lg cursor-pointer"
