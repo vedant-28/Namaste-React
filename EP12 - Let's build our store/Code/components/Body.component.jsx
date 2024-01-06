@@ -23,10 +23,10 @@ const Body = () => {
     const jsonRestaurantData = await restaurantData.json();
     console.log('data===>', jsonRestaurantData);
     setResList(
-      jsonRestaurantData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      jsonRestaurantData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilterdRestList(
-      jsonRestaurantData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      jsonRestaurantData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 

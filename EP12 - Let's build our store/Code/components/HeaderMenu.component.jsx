@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import restaurantLogo from "../assets/chef-restaurant-logo.svg";
 import shoppingCartIcon from "../assets/shopping-cart.svg";
 import UserContext from "../Contexts/userContext";
+import { useSelector } from "react-redux";
 
 const HeaderMenu = () => {
   const [buttonName, setButtonName] = useState("LOGIN");
   const { loggedInUser } = useContext(UserContext);
+  const cartItems = useSelector(store => store.cart.items);
 
   return (
     <div className="flex justify-between items-center list-none h-90  bg-gradient-to-r from-tangerine-faint to-tangerine-deep">
@@ -37,12 +39,13 @@ const HeaderMenu = () => {
           >
             {buttonName}
           </button>
-          <li className="p-2.5 m-2.5 text-lg cursor-pointer">
+          <li className="flex justify-between p-2.5 m-2.5 text-lg cursor-pointer">
             <img
               className="w-8 h-8"
               src={shoppingCartIcon}
               alt="shopping-cart"
             />
+            <span className="px-[5px]">{cartItems.length}</span>
           </li>
         </ul>
       </div>

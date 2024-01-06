@@ -14,6 +14,11 @@ const ResMenuItemList = ({ items }) => {
             <p className="font-light">{item?.card?.info?.description}</p>
           </div>
           <div className="w-3/12">
+          <div className="absolute pl-[134px]">
+              <button className="bg-orange-200 border-black rounded-full p-2 text-sm ring-1 ring-inset ring-black">
+                Add +
+              </button>
+            </div>
             <img src={RESTAURANT_IMG_URL + item?.card?.info?.imageId} />
           </div>
         </div>

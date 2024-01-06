@@ -8,6 +8,8 @@ import Error from "./components/Error.component";
 import RestMenu from "./components/RestMenu.component";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import UserContext from "./Contexts/userContext";
+import { Provider } from "react-redux";
+import appStore from "./redux/appStore";
 import "./index.css";
 
 const AppLayout = () => {
@@ -25,12 +27,15 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{loggedInUser: userName}}>
-      <div className="app">
-        <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{loggedInUser: userName}}>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
+    
   );
 };
 
