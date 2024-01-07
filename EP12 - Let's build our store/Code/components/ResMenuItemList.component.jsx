@@ -1,21 +1,34 @@
 import React from "react";
 import { RESTAURANT_IMG_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItem } from "../redux/cartSlice";
 
 const ResMenuItemList = ({ items }) => {
+  const dispatch = useDispatch();
+  const handleAddItemClick = (item) => {
+    dispatch(addItem(item));
+  };
+
   return (
     <div>
-			{items.map(item => (
-        <div key={item.card.info.id} className="border-black border-b-[1px] p-4 flex items-center justify-between">
+      {items.map((item) => (
+        <div
+          key={item.card.info.id}
+          className="border-black border-b-[1px] p-4 flex items-center justify-between"
+        >
           <div className="w-9/12">
             <div className="py-[2px]">
               <span>{item?.card?.info?.name}&nbsp;&nbsp;&nbsp;</span>
-              <span>₹{item?.card?.info?.price/100}</span>
+              <span>₹{item?.card?.info?.price / 100}</span>
             </div>
             <p className="font-light">{item?.card?.info?.description}</p>
           </div>
           <div className="w-3/12">
-          <div className="absolute pl-[134px]">
-              <button className="bg-orange-200 border-black rounded-full p-2 text-sm ring-1 ring-inset ring-black">
+            <div className="absolute pl-[134px]">
+              <button
+                className="bg-orange-200 border-black rounded-full p-2 text-sm ring-1 ring-inset ring-black"
+                onClick={() => handleAddItemClick(item)}
+              >
                 Add +
               </button>
             </div>
